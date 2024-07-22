@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log in & Sign up Form</title>
+           <link rel="stylesheet" href="./styles/loginsignup.css" />
+        
+  </head>
+  <body>
+      <main>
+          <div class="box">
+            <div class="inner-box">
+              <div class="forms-wrap">
+                <form
+                  onsubmit="event.preventDefault(); login();"
+                  autocomplete="off"
+                  class="sign-in-form"
+                  id="sign-in-form"
+                >
+                  <div class="logo">
+                    <img src="./images/phishguardlogo.png" alt="PhishGuard" />
+                    <h4>PhishGuard</h4>
+                  </div>
+
+                  <div class="heading">
+                    <h2>Welcome Back</h2>
+                    <h6>Not registred yet?</h6>
+                    <a href="#" class="toggle">Sign up</a>
+                  </div>
+
+                  <div class="actual-form">
+                    <div class="input-wrap">
+                      <input
+                        type="email"
+                        id="signInEmail"
+                        minlength="4"
+                        class="input-field"
+                        autocomplete="off"
+                        required
+                      />
+                      <label for="txtEmail">Email</label>
+                    </div>
+
+                    <div class="input-wrap">
+                      <input
+                        type="password"
+                        id="signInPassword"
+                        minlength="8"
+                        class="input-field"
+                        autocomplete="off"
+                        required
+                      />
+                      <label for="signInPassword">Password</label>
+                      <span
+                        class="visibility-toggle"
+                        onclick="togglePasswordVisibility('signInPassword')"
+                      >
+                        <ion-icon name="eye-outline"></ion-icon>
+                      </span>
+                    </div>
+
+                    <input
+                      type="submit"
+                      value="Sign In"
+                      class="signin-btn"
+                      id="btnLogin"
+                    />
+
+                    <p class="text">
+                      Forgotten Your Password or Your Login Details?
+                      <a href="#">Get help</a> signing in
+                    </p>
+                  </div>
+                </form>
+
+                <form
+                  onsubmit="event.preventDefault(); signup();"
+                  autocomplete="off"
+                  class="sign-up-form"
+                  id="sign-up-form"
+                >
+                  <div class="logo">
+                    <img src="./images/phishguardlogo.png" alt="PhishGuard" />
+                    <h4>PhishGuard</h4>
+                  </div>
+
+                  <div class="heading">
+                    <h2>Get Started</h2>
+                    <h6>Already have an account?</h6>
+                    <a href="#" class="toggle">Sign in</a>
+                  </div>
+
+                  <div class="actual-form">
+                    <div class="input-wrap">
+                      <input
+                        type="text"
+                        minlength="4"
+                        class="input-field"
+                        id="username"
+                        autocomplete="off"
+                        required
+                      />
+                      <label>UserName</label>
+                    </div>
+
+                    <div class="input-wrap">
+                      <input
+                        type="email"
+                        id="signUpEmail"
+                        class="input-field"
+                        autocomplete="off"
+                        required
+                      />
+                      <label for="signUpEmail">Email</label>
+                    </div>
+
+                    <div class="input-wrap">
+                      <input
+                        type="password"
+                        id="signUpPassword"
+                        minlength="8"
+                        class="input-field"
+                        autocomplete="off"
+                        required
+                      />
+                      <label for="signUpPassword">Password</label>
+                      <span
+                        class="visibility-toggle"
+                        onclick="togglePasswordVisibility('signUpPassword')"
+                      >
+                        <ion-icon name="eye-outline"></ion-icon>
+                      </span>
+                    </div>
+
+                    <input type="submit" value="Sign Up" class="signup-btn" />
+
+                    <p class="text">
+                      By signing up, I agree to the
+                      <a href="#">Terms of Services</a> and
+                      <a href="#">Privacy Policy</a>
+                    </p>
+                  </div>
+                </form>
+              </div>
+
+              <div class="carousel">
+                <div class="images-wrapper">
+                  <img
+                    src="./images/images1.png"
+                    class="image img-1 show"
+                    alt=""
+                  />
+                  <img src="./images/images2.png" class="image img-2" alt="" />
+                  <img src="./images/images3.png" class="image img-3" alt="" />
+                </div>
+
+                <div class="text-slider">
+                  <div class="text-wrap">
+                    <div class="text-group">
+                      <h2>Detect your own messages</h2>
+                      <h2>Defend against Phishing Attackers</h2>
+                      <h2>Scan your links</h2>
+                    </div>
+                  </div>
+
+                  <div class="bullets">
+                    <span class="active" data-value="1"></span>
+                    <span data-value="2"></span>
+                    <span data-value="3"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- Javascript file -->
+
+        <script src="./scripts/login.js"></script>
+        <script src="server.js"></script>
+        <!-- 
+        - ionicon link
+        -->
+        <script
+          type="module"
+          src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script
+          nomodule
+          src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+          <script type="module" src="./scripts/firebase-app.js"></script>
+<script type="module" src="./scripts/firebase-auth.js"></script>
+
+
+          <script type="module">
+            import { initializeApp } from './scripts/firebase-app.js';
+            import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "./scripts/firebase-auth.js";
+        
+            document.addEventListener('DOMContentLoaded', (event) => {
+              const firebaseConfig = {
+                apiKey: "AIzaSyAbuNPofZAVd7Qhv2bdRQWOji1I_xY2l7k",
+              authDomain: "phishing-detection-66039.firebaseapp.com",
+              databaseURL:
+                "https://phishing-detection-66039-default-rtdb.firebaseio.com",
+              projectId: "phishing-detection-66039",
+              storageBucket: "phishing-detection-66039.appspot.com",
+              messagingSenderId: "953688027068",
+              appId: "1:953688027068:web:261bd6cb83adfeb076c5b9",
+              measurementId: "G-586C1B48J7",
+            };
+            
+        
+              const app = initializeApp(firebaseConfig);
+              const auth = getAuth(app);
+        
+              window.login = function() {
+                const email = document.getElementById("signInEmail").value;
+                const password = document.getElementById("signInPassword").value;
+                signInWithEmailAndPassword(auth, email, password)
+                  .then(async (userCredential) => {
+                    const user = userCredential.user;
+                    const idToken = await user.getIdToken();
+                    localStorage.setItem("idToken", idToken);
+                    window.location.href = "/home";
+                  })
+                  .catch((error) => {
+                    console.error("Error logging in: ", error);
+                  });
+              };
+        
+              window.signup = function() {
+                const email = document.getElementById("signUpEmail").value;
+                const password = document.getElementById("signUpPassword").value;
+                const UserName = document.getElementById("username").value;
+                createUserWithEmailAndPassword(auth, email, password)
+                  .then(async (userCredential) => {
+                    const user = userCredential.user;
+                    const idToken = await user.getIdToken();
+                    localStorage.setItem("idToken", idToken);
+                    window.location.href = "/home";
+                  })
+                  .catch((error) => {
+                    console.error("Error signing up: ", error);
+                  });
+              };
+            });
+          </script>
+        
+  </body>
+    
+  
+</html>
